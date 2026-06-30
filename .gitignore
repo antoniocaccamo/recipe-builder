@@ -1,0 +1,98 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+**/.DS_Store
+
+
+
+
+#Maven
+**/target/
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/pom.xml.versionsBackup
+**/release.properties
+**/.flattened-pom.xml
+
+# Eclipse
+**/.project
+**/.classpath
+**/.settings/
+**/bin/
+
+# IntelliJ
+**/.idea
+**/*.ipr
+**/*.iml
+**/*.iws
+
+# NetBeans
+**/nb-configuration.xml
+
+# Visual Studio Code
+**/.vscode
+**/.factorypath
+
+# OSX
+**/.DS_Store
+
+# Vim
+**/*.swp
+**/*.swo
+
+# patch
+**/*.orig
+**/*.rej
+
+# Local environment
+**/.env
+
+# Plugin directory
+**//.quarkus/cli/plugins/
+# TLS Certificates
+**/.certs/
+
+
+
+**/.DS_Store
+**/.thumbs.db
+**/node_modules
+
+# .env files
+**/.env*
+
+# Quasar core related directories
+**/.quasar
+**//dist
+**//quasar.config.*.temporary.compiled*
+
+# Cordova related directories and files
+**//src-cordova/node_modules
+**//src-cordova/platforms
+**//src-cordova/plugins
+**//src-cordova/www
+
+# Capacitor related directories and files
+**//src-capacitor/www
+**//src-capacitor/node_modules
+
+# Log files
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+
+**/.mvn
+**/target
+**/outputs*
+
+**/*.zip
+

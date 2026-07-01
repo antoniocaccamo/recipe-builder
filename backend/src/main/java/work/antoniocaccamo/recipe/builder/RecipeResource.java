@@ -1,7 +1,17 @@
+package work.antoniocaccamo.recipe.builder;
+
 import io.quarkus.security.Authenticated;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import jakarta.ws.rs.*;
+import jakarta.ws.rs.BadRequestException;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.UUID;
@@ -10,7 +20,6 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import work.antoniocaccamo.recipe.builder.dto.IngredientRequest;
 import work.antoniocaccamo.recipe.builder.dto.Recipe;
 import work.antoniocaccamo.recipe.builder.model.RecipeEntity;
-import work.antoniocaccamo.recipe.builder.model.RecipeRatingEntity;
 import work.antoniocaccamo.recipe.builder.service.RecipeService;
 
 @Path("/api/v1/recipes")

@@ -1,15 +1,12 @@
 package work.antoniocaccamo.recipe.builder.service;
 
-import java.net.ConnectException;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.jboss.logging.Logger;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -39,8 +36,10 @@ public class RecipeService {
 
         try {
             Recipe recipe = recipeAIService.generateRecipe(request.ingredients());
-            logger.info("Recipe generated for user: %s".formatted(recipe.getUserId()));
-            return saveRecipe(userId, recipe);
+            recipe.setRecipeId(null);
+            recipe.setUserId(userId);
+            
+            return saveRecipe( recipe);
         } catch ( RuntimeException ce  ) {
             logger.error("error occurred" ,  ce);
             throw new RuntimeException(ce.getLocalizedMessage());
@@ -48,13 +47,15 @@ public class RecipeService {
     }
 
     @Transactional
-    public Recipe saveRecipe(String userId, Recipe recipe) {
+    public Recipe saveRecipe(Recipe recipe) {
 
         RecipeEntity recipeEntity = recipeMapper.toEntity(recipe);
-        recipeEntity.setRecipeId(UUID.randomUUID());
-        recipeEntity.setUserId(userId);
+        //recipeEntity.setRecipeId(UUID.randomUUID());
         RecipeEntity.persist(recipeEntity);
-        return recipeMapper.toDTO(recipeEntity);
+        
+        Recipe saved =  recipeMapper.toDTO(recipeEntity);
+        logger.info("Recipe saved : %s".formatted(saved));
+        return saved;
     }
 
 

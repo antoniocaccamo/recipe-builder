@@ -1,10 +1,9 @@
 package work.antoniocaccamo.recipe.builder.dto;
 
 import java.util.List;
-import java.util.UUID;
 
 public class Recipe {
-    private UUID recipeId;
+    private String recipeId;
     private String userId;
     private String title;
     private Integer totalTimeMinutes;
@@ -14,10 +13,11 @@ public class Recipe {
     private Long cookedCount;
     private Double averageRating;
     private Long ratingCount;
-    public UUID getRecipeId() {
+
+    public String getRecipeId() {
         return recipeId;
     }
-    public void setRecipeId(UUID recipeId) {
+    public void setRecipeId(String recipeId) {
         this.recipeId = recipeId;
     }
     public String getUserId() {
@@ -82,6 +82,10 @@ public class Recipe {
     public Recipe setRatingCount(Long ratingCount) {
         this.ratingCount = ratingCount;
         return this;
+    }
+    @Override
+    public String toString() {
+        return "Recipe [recipeId=" + recipeId + ", userId=" + userId + ", title=" + title + ", totalTimeMinutes=" + totalTimeMinutes + "]";
     }
 
 
